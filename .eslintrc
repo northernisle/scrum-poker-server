@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "consistent-return": 0, // allow unimportant omitted return statements
+    "eqeqeq": [2, "smart"], // allow the use of == when comparing: null, two literal values, typeof
+    "no-console": 0,
+    "no-use-before-define": [2, { "variables": false }], // allow arrow functions (and variables) to be called before declaration
+    "no-unused-expressions": [
+      1,
+      { "allowShortCircuit": true, "allowTernary": true }
+    ], // allow the use of short-circuit and ternary expressions
+    "no-plusplus": 0, // allow the ++ operator
+    "no-restricted-syntax": [2, "LabeledStatement", "WithStatement"], // allow for-of and for-in loops
+    "no-param-reassign": [2, { "props": false }], // allow assignment to argument object properties
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }] // allow devDependencies to be referenced in code
+  },
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"] // doesn't highlight absolute imports scoped from src
+      }
+    }
+  }
+}
