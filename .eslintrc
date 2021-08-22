@@ -11,7 +11,8 @@
     "no-plusplus": 0, // allow the ++ operator
     "no-restricted-syntax": [2, "LabeledStatement", "WithStatement"], // allow for-of and for-in loops
     "no-param-reassign": [2, { "props": false }], // allow assignment to argument object properties
-    "import/no-extraneous-dependencies": [2, { "devDependencies": true }] // allow devDependencies to be referenced in code
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }], // allow devDependencies to be referenced in code
+    "import/prefer-default-export": 0 // allow single named exports
   },
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "plugins": ["prettier"],

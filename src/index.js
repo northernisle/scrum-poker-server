@@ -9,11 +9,10 @@ import farmhash from 'farmhash';
 
 import socketProcess from './socketProcess';
 
-const PORT = 8000;
-const REDIS_PORT = 6379;
 const STICKY_SESSION = 'sticky-session:connection';
-
 const threadCount = os.cpus().length;
+
+const { HOST, PORT, REDIS_PORT } = process.env;
 
 const spawnWorker = () => {
   const worker = cluster.fork();
@@ -45,10 +44,10 @@ if (cluster.isMaster) {
   server.listen(PORT);
 } else {
   const app = express();
-  const server = app.listen(0, 'localhost');
+  const server = app.listen(0, HOST);
   const io = socketIO(server);
 
-  io.adapter(redisAdapter({ host: 'localhost', port: REDIS_PORT }));
+  io.adapter(redisAdapter({ host: HOST, port: REDIS_PORT }));
 
   io.on('connection', (socket) => {
     socketProcess(io, socket);
