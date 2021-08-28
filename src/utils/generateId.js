@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import redis from 'store';
 
-const KEY = 'ID_TABLE';
+const KEY = process.env.REDIS_KEY;
 
 const generateId = async () => {
   let unique = false;
