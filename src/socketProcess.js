@@ -19,8 +19,17 @@ const server = (io, socket) => {
 
       if (roomExists) {
         socket.join(id);
+        socket.emit('join-room', true, id);
+      } else {
+        socket.emit('join-room', false, id);
       }
     }
+
+    socket.emit('join-room', true, id);
+  });
+
+  socket.on('leave-room', async (id) => {
+    socket.leave(id);
   });
 
   socket.on('disconnecting', () => {
